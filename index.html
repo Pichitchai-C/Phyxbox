@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PhyxBox — ห้องแล็บฟิสิกส์ 3 มิติ</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="css/style.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script type="importmap">
+{ "imports": {
+  "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+  "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+} }
+</script>
+</head>
+<body>
+<header id="top">
+  <b class="logo">PhyxBox</b>
+  <select id="lesson"><option>ม.4 · พื้นเอียงและกฎของนิวตัน</option></select>
+  <select id="mode">
+    <option value="lab">โหมดทดลอง</option>
+    <option value="exam">โหมดท้าทายข้อสอบ</option>
+  </select>
+</header>
+
+<main id="viewport"></main>
+
+<aside id="left" class="panel">
+  <h3>คลังข้อมูลและสูตร</h3>
+  <p id="theory"></p>
+  <h4>สูตรตั้งต้น</h4><div id="base"></div>
+  <h4>วิวัฒนาการสูตร</h4><div id="evolve"></div><div id="final"></div>
+  <h4>สูตรลัด</h4><div id="shortcut"></div><small id="cond"></small>
+  <div class="row"><button id="hintBtn">💡 Hint</button></div>
+  <p id="hint"></p>
+</aside>
+
+<aside id="right" class="panel">
+  <h3>ตัวแปรและการควบคุม</h3>
+  <label>มวล m = <b id="mV"></b> kg <input id="m" type="range" min="0.5" max="10" step="0.5" value="2"></label>
+  <label>มุมพื้นเอียง θ = <b id="thV"></b>° <input id="th" type="range" min="0" max="60" step="1" value="0"></label>
+  <label>แรงดึง F = <b id="FV"></b> N <input id="F" type="range" min="0" max="100" step="1" value="6"></label>
+  <label>สัมประสิทธิ์เสียดทาน μ = <b id="muV"></b> <input id="mu" type="range" min="0" max="1" step="0.05" value="0"></label>
+  <div class="row"><button id="run" class="primary">▶ เริ่ม</button><button id="reset">↺ รีเซ็ต</button></div>
+  <div id="readout">a = <b id="aR"></b> m/s²<br>v = <span id="vR"></span> m/s, s = <span id="sR"></span> m, t = <span id="tR"></span> s<br><small>ใช้ g = 10 m/s²</small></div>
+  <h4>✏️ กระดานทด</h4>
+  <div class="row">
+    <button id="padT">เปิด/ปิด</button>
+    <button class="dot" data-c="#111111" style="background:#111111" aria-label="ปากกาดำ"></button>
+    <button class="dot" data-c="#d32f2f" style="background:#d32f2f" aria-label="ปากกาแดง"></button>
+    <button class="dot" data-c="#1565c0" style="background:#1565c0" aria-label="ปากกาน้ำเงิน"></button>
+    <button id="era">ยางลบ</button><button id="clr">ล้าง</button>
+  </div>
+  <div id="exam" class="hidden">
+    <h4>โจทย์</h4><p id="q"></p>
+    <div class="row"><input id="ans" type="number" step="any" placeholder="a (m/s²)"><button id="chk">ตรวจคำตอบ</button></div>
+    <p id="res"></p>
+  </div>
+</aside>
+
+<footer id="bottom"><canvas id="graph"></canvas></footer>
+<canvas id="pad"></canvas>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
